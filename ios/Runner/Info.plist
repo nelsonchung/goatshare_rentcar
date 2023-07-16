@@ -49,5 +49,7 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
     <string>此應用程式需要存取您的相機，以便拍攝照片。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>使用相簿功能來選擇檔案</string>
 </dict>
 </plist>

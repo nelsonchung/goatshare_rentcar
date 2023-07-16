@@ -85,6 +85,33 @@ class _CustomerUploadMaterialPageState
     });
   }
 
+  void _showSelectedImagesDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('已選擇的圖片'),
+        content: SingleChildScrollView(
+          child: Column(
+            children: [
+              if (idCardFrontImage != null) Image.file(idCardFrontImage!),
+              if (idCardBackImage != null) Image.file(idCardBackImage!),
+              if (licenseFrontImage != null) Image.file(licenseFrontImage!),
+              if (licenseBackImage != null) Image.file(licenseBackImage!),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('確定'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,35 +147,7 @@ class _CustomerUploadMaterialPageState
           const SizedBox(height: 32.0),
           ElevatedButton(
             onPressed: () {
-              // 執行上傳資料的相關操作
-              // 可以將選擇好的圖片檔案傳送給後端或是進行其他處理
-
-              // 以下是一個範例，用於顯示選擇的圖片
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('已選擇的圖片'),
-                  content: Column(
-                    children: [
-                      if (idCardFrontImage != null)
-                        Image.file(idCardFrontImage!),
-                      if (idCardBackImage != null) Image.file(idCardBackImage!),
-                      if (licenseFrontImage != null)
-                        Image.file(licenseFrontImage!),
-                      if (licenseBackImage != null)
-                        Image.file(licenseBackImage!),
-                    ],
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('確定'),
-                    ),
-                  ],
-                ),
-              );
+              _showSelectedImagesDialog();
             },
             child: const Text('上傳資料'),
           ),

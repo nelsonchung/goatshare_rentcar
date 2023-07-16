@@ -66,6 +66,7 @@ class MyHomePage extends StatelessWidget {
               // ignore: sort_child_properties_last
               child: const Text("Let's go"),
               style: ElevatedButton.styleFrom(
+                // ignore: deprecated_member_use
                 foregroundColor: const Color.fromARGB(255, 0, 0, 0),
                 backgroundColor: const Color.fromARGB(255, 250, 250, 250),
                 padding:
@@ -89,8 +90,10 @@ class MyHomePage extends StatelessWidget {
               // ignore: sort_child_properties_last
               child: const Text('上傳資料'),
               style: ElevatedButton.styleFrom(
-                foregroundColor: const Color.fromARGB(255, 0, 0, 0),
-                backgroundColor: const Color.fromARGB(255, 250, 250, 250),
+                // ignore: deprecated_member_use
+                primary: const Color.fromARGB(255, 250, 250, 250),
+                // ignore: deprecated_member_use
+                onPrimary: const Color.fromARGB(255, 0, 0, 0),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 textStyle: const TextStyle(fontSize: 20),

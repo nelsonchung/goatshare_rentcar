@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+
+enum ImageType {
+  idCardFront,
+  idCardBack,
+  licenseFront,
+  licenseBack,
+}
 
 class CustomerUploadMaterialPage extends StatefulWidget {
   const CustomerUploadMaterialPage({Key? key}) : super(key: key);
@@ -18,22 +26,62 @@ class _CustomerUploadMaterialPageState
   File? licenseBackImage;
 
   Future<void> _takePhoto(ImageType imageType) async {
-    // 使用相機拍照並取得圖片檔案
-    // 這裡使用你選擇的相機套件或是相機API來實作拍照功能
-    // 當使用者完成拍照後，將圖片檔案設定給對應的imageType
+    final imagePicker = ImagePicker();
+    final XFile? imageFile =
+        await imagePicker.pickImage(source: ImageSource.camera);
+
+    if (imageFile == null) {
+      return;
+    }
+
+    final File savedImage = File(imageFile.path);
 
     setState(() {
-      // 根據imageType更新對應的圖片檔案變數
+      // 根據 imageType 更新對應的圖片檔案變數
+      switch (imageType) {
+        case ImageType.idCardFront:
+          idCardFrontImage = savedImage;
+          break;
+        case ImageType.idCardBack:
+          idCardBackImage = savedImage;
+          break;
+        case ImageType.licenseFront:
+          licenseFrontImage = savedImage;
+          break;
+        case ImageType.licenseBack:
+          licenseBackImage = savedImage;
+          break;
+      }
     });
   }
 
   Future<void> _selectFile(ImageType imageType) async {
-    // 選擇檔案並取得圖片檔案
-    // 這裡使用你選擇的檔案選擇套件或是檔案選擇API來實作選擇檔案功能
-    // 當使用者完成選擇檔案後，將圖片檔案設定給對應的imageType
+    final imagePicker = ImagePicker();
+    final XFile? imageFile =
+        await imagePicker.pickImage(source: ImageSource.gallery);
+
+    if (imageFile == null) {
+      return;
+    }
+
+    final File selectedImage = File(imageFile.path);
 
     setState(() {
-      // 根據imageType更新對應的圖片檔案變數
+      // 根據 imageType 更新對應的圖片檔案變數
+      switch (imageType) {
+        case ImageType.idCardFront:
+          idCardFrontImage = selectedImage;
+          break;
+        case ImageType.idCardBack:
+          idCardBackImage = selectedImage;
+          break;
+        case ImageType.licenseFront:
+          licenseFrontImage = selectedImage;
+          break;
+        case ImageType.licenseBack:
+          licenseBackImage = selectedImage;
+          break;
+      }
     });
   }
 
@@ -143,6 +191,20 @@ class _CustomerUploadMaterialPageState
                 onPressed: () {
                   setState(() {
                     // 清除對應的圖片檔案
+                    switch (imageType) {
+                      case ImageType.idCardFront:
+                        idCardFrontImage = null;
+                        break;
+                      case ImageType.idCardBack:
+                        idCardBackImage = null;
+                        break;
+                      case ImageType.licenseFront:
+                        licenseFrontImage = null;
+                        break;
+                      case ImageType.licenseBack:
+                        licenseBackImage = null;
+                        break;
+                    }
                   });
                 },
                 icon: const Icon(Icons.delete),
@@ -183,11 +245,4 @@ class _CustomerUploadMaterialPageState
       ),
     );
   }
-}
-
-enum ImageType {
-  idCardFront,
-  idCardBack,
-  licenseFront,
-  licenseBack,
 }

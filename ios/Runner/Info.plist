@@ -47,5 +47,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+    <string>此應用程式需要存取您的相機，以便拍攝照片。</string>
 </dict>
 </plist>

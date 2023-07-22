@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+1
+version: 0.0.2+1
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
@@ -69,6 +69,21 @@ flutter:
     - assets/porsche.png
     - assets/bmw.png
     - assets/all.png
+    - assets/BMW_M4.jpg
+    - assets/BMW_M2.jpg
+    - assets/BMW_F80_M3_COMPETITION.jpg
+    - assets/BMW_330i_M_SPORT.jpg
+    - assets/ASTON_MARTIN_VANTAGE.jpg
+    - assets/TOYOTA_SUPRA.jpg
+    - assets/TESLA_MODEL_X.jpg
+    - assets/TESLA_MODEL_S.jpg
+    - assets/SUZUKI_JIMMY.jpg
+    - assets/PORSCHE_PANAMERA_4S.jpg
+    - assets/PORSCHE_981_BOSTER_GTS.jpg
+    - assets/PORSCHE_911_GT3.jpg
+    - assets/MERCEDES_E43_ESTATE.jpg
+    - assets/MERCEDES_C300.jpg
+    - assets/LEXUS_LM300h.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -97,3 +112,13 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  # Nelson added font
+  fonts:
+    - family: PTSerif
+      fonts:
+        - asset: fonts/PTSerif-Regular.ttf
+        - asset: fonts/PTSerif-Bold.ttf
+          weight: 700
+
+
